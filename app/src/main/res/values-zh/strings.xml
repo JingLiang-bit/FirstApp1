@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FirstApp</string>
+    <string name="hello">生日快乐~</string>
+    <string name="from">爱丽丝</string>
+</resources>
