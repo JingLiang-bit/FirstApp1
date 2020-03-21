@@ -5,37 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-
+    tools:context=".Activity2" >
 
     <EditText
-        android:id="@+id/inpText"
+        android:id="@+id/inputText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
-        android:importantForAutofill="no"
+        android:textSize="30sp"
+        android:ems="10"
         android:hint="@string/hint_txt"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:onClick="onClick"
-        android:text="@string/btn1" />
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="trans"
+        android:text="@string/btn1"
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/showText"
+        android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:textSize="30sp"
         android:text="@string/result" />
-
 </LinearLayout>

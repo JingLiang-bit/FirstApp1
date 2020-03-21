@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">FirstApp</string>
     <string name="hello">Happy Birthday~</string>
-    <string name="from">Alice</string>
+    <string name="hint_txt">请输入摄氏度</string>
+    <string name="btn1">转换为华氏温度</string>
+    <string name="result">转换结果为：</string>
+
 </resources>
