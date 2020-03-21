@@ -5,39 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements TextView.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
-    TextView out;
-    EditText inp;
+    TextView result;
+    EditText input;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        out = (TextView) findViewById(R.id.showText);
-        inp = (EditText) findViewById(R.id.inpText);
-
-        Button btn = (Button) findViewById(R.id.btn1);
-        //btn.setOnClickListener(this);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("mail", "onClick......");
-                String str = inp.getText().toString();
-                out.setText("Hello" + str);
-            }
-        });
+        result = (TextView) findViewById(R.id.result);
+        input = (EditText)findViewById(R.id.inputText);
     }
 
-
-    @Override
-    public void onClick(View v) {
-        Log.i("click", "onClick");
+    public void trans(View v) {
+        String str = input.getText().toString();
+        double cnt = Integer.parseInt(str) * 1.8+32;
+        result.setText("转换结果为："+cnt);
     }
-
 }

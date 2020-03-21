@@ -4,5 +4,6 @@
     <string name="hint_txt">请输入摄氏度</string>
     <string name="btn1">转换为华氏温度</string>
     <string name="result">转换结果为：</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>
