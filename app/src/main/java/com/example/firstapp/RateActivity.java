@@ -20,8 +20,8 @@ public class RateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
 
-        rmb=(EditText) findViewById(R.id.rmb);
-        showOut=(TextView)findViewById(R.id.showOut);
+        rmb=findViewById(R.id.rmb);
+        showOut=findViewById(R.id.showOut);
     }
 
     public void onClick(View btn) {
@@ -44,7 +44,7 @@ public class RateActivity extends AppCompatActivity {
     }
 
     public void openOne(View btn){
-        Intent hello=new Intent(this,SecondActivity.class);
+        //Intent hello=new Intent(this,SecondActivity.class);
         Intent web=new Intent(Intent.ACTION_VIEW, Uri.parse("https://authserver.swufe.edu.cn"));
         startActivity(web);
     }
