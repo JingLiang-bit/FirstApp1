@@ -4,6 +4,13 @@
     <string name="hint_txt">请输入摄氏度</string>
     <string name="btn1">转换为华氏温度</string>
     <string name="result">转换结果为：</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="teamA">teamA</string>
+    <string name="btn21">+1 point</string>
+    <string name="btn22">+2 points</string>
+    <string name="btn23">+3 points</string>
+    <string name="btn24">resit</string>
+
+    <string name="score">0</string>
+    <string name="teamB">teamB</string>
 
 </resources>
