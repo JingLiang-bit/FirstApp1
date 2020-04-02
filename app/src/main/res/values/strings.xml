@@ -18,5 +18,9 @@
     <string name="dollar">Dollar</string>
     <string name="euro">Euro</string>
     <string name="won">Won</string>
+    <string name="btn_open_lable">Config</string>
+    <string name="btn_save_lable">Save</string>
+    <string name="huilv">汇率转换</string>
+    <string name="menu_set_lable">setting</string>
 
 </resources>
