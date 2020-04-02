@@ -12,24 +12,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberDecimal"
-        android:importantForAutofill="no" />
+        android:hint="@string/dollar"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/euro_rate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberDecimal"
-        android:importantForAutofill="no" />
+        android:hint="@string/euro"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/won_rate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberDecimal"
-        android:importantForAutofill="no" />
+        android:hint="@string/won"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/btn_save"
