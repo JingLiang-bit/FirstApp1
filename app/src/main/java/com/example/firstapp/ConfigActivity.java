@@ -26,7 +26,7 @@ public class ConfigActivity extends AppCompatActivity {
         //获取数据的时候是有类型的；
         float dollar2=intent.getFloatExtra("dollar_rate_key",0.0f);
         float euro2=intent.getFloatExtra("euro_rate_key",0.0f);
-        float won2=intent.getFloatExtra("euro_rate_key",0.0f);
+        float won2=intent.getFloatExtra("won_rate_key",0.0f);
 
         Log.i(TAG,"onCreate:dollar2="+dollar2);
         Log.i(TAG,"onCreate:euro2="+euro2);

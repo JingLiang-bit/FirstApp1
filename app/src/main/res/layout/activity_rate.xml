@@ -52,7 +52,7 @@
         android:id="@+id/btn_won"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="openOne"
+        android:onClick="onClick"
         android:text="@string/won" />
 
     <Button
