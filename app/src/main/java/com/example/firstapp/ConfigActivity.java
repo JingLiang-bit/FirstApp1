@@ -24,9 +24,9 @@ public class ConfigActivity extends AppCompatActivity {
         //在被传递参数的页面，用getIntent获得传递过来的参数；
         Intent intent =getIntent();
         //获取数据的时候是有类型的；
-        float dollar2=intent.getFloatExtra("dollar_rate_key",0.0f);
-        float euro2=intent.getFloatExtra("euro_rate_key",0.0f);
-        float won2=intent.getFloatExtra("won_rate_key",0.0f);
+        float dollar2=intent.getFloatExtra("dollar_rate_key",0.1f);
+        float euro2=intent.getFloatExtra("euro_rate_key",0.2f);
+        float won2=intent.getFloatExtra("won_rate_key",0.3f);
 
         Log.i(TAG,"onCreate:dollar2="+dollar2);
         Log.i(TAG,"onCreate:euro2="+euro2);
