@@ -16,7 +16,7 @@ public class MyListActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.mylist);
 
-        String date[] = {"wait......"};
+        String date[] = {"111","222"};
         ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, date);
         listView.setAdapter(adapter);
     }
