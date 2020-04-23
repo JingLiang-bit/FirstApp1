@@ -22,5 +22,7 @@
     <string name="btn_save_lable">Save</string>
     <string name="huilv">汇率转换</string>
     <string name="menu_set_lable">setting</string>
+    <string name="setting">setting</string>
+    <string name="label_open_list">OpenList</string>
 
 </resources>

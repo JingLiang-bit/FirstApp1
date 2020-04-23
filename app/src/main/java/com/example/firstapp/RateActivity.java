@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,6 +27,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class RateActivity<runnable> extends AppCompatActivity implements Runnable {
 
@@ -32,6 +37,7 @@ public class RateActivity<runnable> extends AppCompatActivity implements Runnabl
     private float dollarRate = 0.1f;
     private float euroRate = 0.2f;
     private float wonRate = 0.3f;
+    private String updateDate = "";
 
 
     EditText rmb;
@@ -46,7 +52,7 @@ public class RateActivity<runnable> extends AppCompatActivity implements Runnabl
         rmb = findViewById(R.id.rmb);
         showOut = findViewById(R.id.showOut);
 
-        /*
+
         //获取sp里面保存的数据；
         // private是私有访问，只有当前的APP应用可以读写该文件；
         SharedPreferences sharedPreferences = getSharedPreferences("myRate", Activity.MODE_PRIVATE);
@@ -55,16 +61,29 @@ public class RateActivity<runnable> extends AppCompatActivity implements Runnabl
         dollarRate = sharedPreferences.getFloat("dollar_rate",0.1f);
         euroRate = sharedPreferences.getFloat("euro_rate",0.2f);
         wonRate = sharedPreferences.getFloat("won_rate",0.3f);
+        updateDate = sharedPreferences.getString("update_date","");
+
+        //获取当前系统时间
+        Date today = Calendar.getInstance().getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        final String todayStr = sdf.format(today);
+
 
         Log.i(TAG,"onCreate:sp dollarRate"+ dollarRate);
         Log.i(TAG,"onCreate:sp euroRate"+ euroRate);
         Log.i(TAG,"onCreate:sp wonRate"+ wonRate);
-        */
+        Log.i(TAG,"onCreate:sp updateDate"+ updateDate);
 
+        //判断时间
+        if(!todayStr.equals(updateDate)){
+            Log.i(TAG,"onCreate：需要更新");
+            //开启子线程；
+            Thread t = new Thread(this);//线程运行时，会去寻找this对象的run方法；
+            t.start();
+        }else{
+            Log.i(TAG,"onCreate：不需要更新");
+        }
 
-        //开启子线程；
-        Thread t = new Thread(this);//线程运行时，会去寻找this对象的run方法；
-        t.start();
 
         //对Handler类方法的重写，所以后面有“；”
         handler = new Handler() {
@@ -79,6 +98,16 @@ public class RateActivity<runnable> extends AppCompatActivity implements Runnabl
                     Log.i(TAG, "dollarRate=" + dollarRate);
                     Log.i(TAG, "euroRate=" + euroRate);
                     Log.i(TAG, "wonRate=" + wonRate);
+
+                    //保存更新的日期；
+                    SharedPreferences sharedPreferences = getSharedPreferences("myRate", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putFloat("dollar-rate", dollarRate);
+                    editor.putFloat("euro-rate", euroRate);
+                    editor.putFloat("won-rate", wonRate);
+                    editor.putString("update_date",todayStr);
+                    editor.apply();
+
 
                     Toast.makeText(RateActivity.this, "汇率已更新", Toast.LENGTH_SHORT).show();
                 }
@@ -124,7 +153,7 @@ public class RateActivity<runnable> extends AppCompatActivity implements Runnabl
         startActivityForResult(config, 1);//可以打开并带回数据；1是请求参数；
     }
 
-    /*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.rate,menu);//Menu填充器；
@@ -135,11 +164,15 @@ public class RateActivity<runnable> extends AppCompatActivity implements Runnabl
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.menu_set){
             openConfig();
+        }else if(item.getItemId()==R.id.open_list){
+            //打开列表窗口
+            Intent list = new Intent(this, RateListActivity.class);
+            startActivity(list);
         }
         return super.onOptionsItemSelected(item);
     }
 
-    */
+
 
     //处理Config页面带回来的数据
     @Override
@@ -253,20 +286,4 @@ public class RateActivity<runnable> extends AppCompatActivity implements Runnabl
         return out.toString();
     }
 
-    //更新汇率
-    private Runnable runnable = new Runnable() {
-        public void run() {
-            this.update();
-            handler.postDelayed(this, 1000 * 86400);//
-            // 间隔24小时
-            }
-             void update() {
-            }
-         };
-          /** Called when the activity is first created. */
-          @Override
-          protected void onDestroy() {
-              handler.removeCallbacks(runnable);
-              //停止刷新
-              super.onDestroy();    }
 }
