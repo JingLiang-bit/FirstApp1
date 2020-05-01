@@ -15,8 +15,8 @@ public class MyListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_list);
 
         ListView listView = findViewById(R.id.mylist);
-
         String date[] = {"111","222"};
+
         ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, date);
         listView.setAdapter(adapter);
     }
