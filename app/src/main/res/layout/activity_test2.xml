@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_my_list2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
     android:orientation="vertical"
-    tools:context=".MyList2Activity">
+    tools:context=".Test2Activity">
 
-    <TextView
-        android:id="@+id/itemTitle"
+    <EditText
+        android:id="@+id/testInp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"/>
-    <TextView
-        android:id="@+id/itemDetail"
+        android:hint="@string/text1_hint"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textSize="24sp" />
+
+    <ListView
+        android:id="@+id/testList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:textSize="15sp"/>
+        android:layout_height="match_parent"
+        android:onClick="openOne"/>
+
 
 
 </LinearLayout>

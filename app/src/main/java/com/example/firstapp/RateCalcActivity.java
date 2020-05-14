@@ -14,6 +14,7 @@ public class RateCalcActivity extends AppCompatActivity {
     String TAG = "rateCalc";
     float rate = 0f;
     EditText inp2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

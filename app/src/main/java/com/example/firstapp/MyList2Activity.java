@@ -1,6 +1,8 @@
 package com.example.firstapp;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,11 +25,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MyList2Activity extends ListActivity implements Runnable, AdapterView.OnItemClickListener{
+public class MyList2Activity extends ListActivity implements Runnable, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private String TAG="mylist2";
     Handler handler;
-    private ArrayList<HashMap<String, String>> listItems; //存放文字、图片信息；
+    private List<HashMap<String, String>> listItems; //存放文字、图片信息；
     private SimpleAdapter listItemAdapter; //适配器
 
 
@@ -45,8 +47,8 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
             @Override
             public void handleMessage(@NonNull Message msg) {
                 if (msg.what == 7) {
-                    List<HashMap<String, String>> list2 = (List<HashMap<String, String>>) msg.obj;
-                    listItemAdapter = new SimpleAdapter(MyList2Activity.this, list2, //listItems数据源
+                    listItems= (List<HashMap<String, String>>) msg.obj;
+                    listItemAdapter = new SimpleAdapter(MyList2Activity.this, listItems, //listItems数据源
                             R.layout.list_item, //ListItem的XML布局实现
                             new String[]{"ItemTitle", "ItemDetail"},
                             new int[]{R.id.itemTitle, R.id.itemDetail}
@@ -57,6 +59,7 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
             }
         };
         getListView().setOnItemClickListener(this);
+        getListView().setOnItemLongClickListener(this);
     }
 
     private void initListView() {
@@ -82,12 +85,12 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
         List<HashMap<String, String>> retList = new ArrayList<HashMap<String, String>>();
         Document doc = null;
         try {
-            Thread.sleep(3000);
+            Thread.sleep(0);
 
             String url = "http://www.usd-cny.com/bankofchina.htm";
             doc = Jsoup.connect(url).get();
             Log.i(TAG, "run:" + doc.title());
-            Elements tables = doc.getElementsByTag("tableDataTable");
+            Elements tables = doc.getElementsByTag("table");
             Element table2 = tables.get(0);
             Log.i(TAG, "table2= " + table2);
             //获取table里TD中的数据；
@@ -147,5 +150,28 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
         rateCalc.putExtra("rate",Float.parseFloat(detailStr));
         startActivity(rateCalc);
 
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+        Log.i(TAG,"onItemLongClick:长按列表项position="+position);
+        //长按进行删除操作
+        //listItems.remove(position);
+        //listItemAdapter.notifyDataSetChanged();
+
+        //构造对话框进行确认删除提示
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("提示").setMessage("请确认是否删除当前数据").setPositiveButton("是", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                listItems.remove(position);
+                listItemAdapter.notifyDataSetChanged();
+            }
+        }).setNegativeButton("否",null);
+        builder.create().show();
+
+        Log.i(TAG,"onItemLongClick:size="+listItems.size());
+
+        return true;//当为false时，说明短按事件依旧可以生效，为true时，长按后不会触发短按事件。
     }
 }
