@@ -154,7 +154,7 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-        Log.i(TAG,"onItemLongClick:长按列表项position="+position);
+        Log.i(TAG,"onItemLongClick:长按position="+position);
         //长按进行删除操作
         //listItems.remove(position);
         //listItemAdapter.notifyDataSetChanged();
