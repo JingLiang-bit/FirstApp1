@@ -49,14 +49,20 @@ public class Test1Activity extends Activity {
         setListeners();// 设置监听
 
     }
+    // 控件初始化
 
 
+    private void setViews() {
 
-    /**
+        et_ss = (EditText) findViewById(R.id.testInp);// EditText控件
 
-     * 数据初始化并设置adapter
+        lsv_ss = (ListView)findViewById(R.id.testList);// ListView控件
 
-     */
+    }
+
+
+    //数据初始化并设置adapter
+
 
     private void setData() {
 
@@ -90,13 +96,9 @@ public class Test1Activity extends Activity {
 
 
 
-    /**
 
-     * 给listView添加item的单击事件
 
-     * @param filter_lists  过滤后的数据集
-
-     */
+     //给listView添加item的单击事件
 
     protected void setItemClick(final List<String> filter_lists) {
 
@@ -118,31 +120,21 @@ public class Test1Activity extends Activity {
 
 
 
-    /**
 
-     * 简单的list集合添加一些测试数据
 
-     */
+     //简单的list集合添加一些测试数据
 
     private void initData() {
 
-        list.add("看着飞舞的尘埃   掉下来");
+        list.add("《春晓》春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。");
 
-        list.add("没人发现它存在");
+        list.add("《鹿柴》空山不见人，但闻人语响。返影入深林，复照青苔上。");
 
-        list.add("多自由自在");
+        list.add("《相思》红豆生南国，春来发几只。愿君多采撷，此物最相思。");
 
-        list.add("可世界都爱热热闹闹");
+        list.add("《杂诗》君自故乡来，应知故乡事。来日倚窗前，寒梅著花未。");
 
-        list.add("容不下   我百无聊赖");
-
-        list.add("不应该   一个人 发呆");
-
-        list.add("只有我   守着安静的沙漠");
-
-        list.add("等待着花开");
-
-        list.add("只有我   看着别人的快乐");
+        list.add("《钟南望余雪》终南阴岭秀，积雪浮云端。林表明霁色，城中增慕寒。");
 
     }
 
@@ -156,25 +148,17 @@ public class Test1Activity extends Activity {
 
 
 
-        /**
+         //对编辑框添加文本改变监听，搜索的具体功能在这里实现
 
-         * 对编辑框添加文本改变监听，搜索的具体功能在这里实现
+         //文本该变的时候进行搜索。关键方法是重写的onTextChanged（）方法。
 
-         * 很简单，文本该变的时候进行搜索。关键方法是重写的onTextChanged（）方法。
-
-         */
 
         et_ss.addTextChangedListener(new TextWatcher() {
 
 
 
-            /**
 
-             *
-
-             * 编辑框内容改变的时候会执行该方法
-
-             */
+             // 编辑框内容改变的时候会执行该方法
 
             @Override
 
@@ -218,19 +202,9 @@ public class Test1Activity extends Activity {
 
 
 
-    /**
 
-     * 控件初始化
 
-     */
 
-    private void setViews() {
-
-        et_ss = (EditText) findViewById(R.id.testInp);// EditText控件
-
-        lsv_ss = (ListView)findViewById(R.id.testList);// ListView控件
-
-    }
 
 
 

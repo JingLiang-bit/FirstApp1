@@ -23,8 +23,7 @@
     <ListView
         android:id="@+id/testList1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onClick="openOne"/>
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>
