@@ -35,7 +35,7 @@ public class Final_SecondActivity extends AppCompatActivity {
                 String thisword = inp.getText().toString();          //获取对象里输入的值
                 //记录搜索到的结果条数
                 int sum = 1;
-                String line, ans = "";
+                String line, str = "";
                 String title = "";
                 try {
 
@@ -51,30 +51,31 @@ public class Final_SecondActivity extends AppCompatActivity {
                             }
 
                             if (line.indexOf(thisword) == i) {
-                                ans += sum + ":" + line + "\n-------" + title + "\n";
+                                str += sum + ":" + line + "\n-------" + title + "\n";
                                 sum++;
-                                text.setText(ans);
+                                text.setText(str);
                                 title = "";
+                                //设置滚动条
                                 text.setMovementMethod(ScrollingMovementMethod.getInstance());
                             }
                             else if
-                            (thisword == "。" || thisword == "？" || thisword == "，" || thisword == "！")
+                            (thisword.equals ("。") || thisword.equals("？") || thisword .equals("，") || thisword.equals("！"))
                                 break out;
 
                         }
 
                     }
 
-                    //字体颜色
                     int n = 0;
-                    SpannableStringBuilder style = new SpannableStringBuilder(ans);
+                    SpannableStringBuilder style = new SpannableStringBuilder(str);
                     while (n >= 0) {
-                        int l = ans.indexOf(thisword, n);
+                        int l = str.indexOf(thisword, n);
                         int r = l + thisword.length();
                         if (l == -1)
                             break;
                         n = l + 1;
 
+                        //设置关键字标红
                         style.setSpan(new ForegroundColorSpan(Color.RED), l, r, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
                     }
 
@@ -83,10 +84,11 @@ public class Final_SecondActivity extends AppCompatActivity {
                     text.setHorizontallyScrolling(true);
                     text.setText(style);
 
-                } catch (IOException e) {
+                }
+                catch (IOException e) {
                     TextView text = findViewById(R.id.final_out);
-                    ans = "抱歉，没有查到您所输入的内容";
-                    text.setText(ans);
+                    str = "抱歉，没有查到您所输入的内容";
+                    text.setText(str);
                 }
             }
         });
