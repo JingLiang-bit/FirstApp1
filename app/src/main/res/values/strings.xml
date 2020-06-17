@@ -28,7 +28,7 @@
     <string name="text1_hint">请输入诗词</string>
     <string name="welcome">欢迎使用飞花令！</string>
     <string name="bg1_pic">bg1_pic</string>
-    <string name="wel_btn">开始查询</string>
+    <string name="wel_btn">出发</string>
     <string name="final_inp_hint">请输入要查询的诗词</string>
     <string name="final_second_btn">查询</string>
     <string name="feihualing">飞花令</string>
